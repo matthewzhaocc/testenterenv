@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hello
+spec:
+  template:
+    spec:
+      containers:
+      - name: hello
+        env:
+            - name: test
+              value: arn:aws:ssm:us-west-2:661723793673:parameter/test
+        image: busybox
+        command: ["echo", "$test"]
